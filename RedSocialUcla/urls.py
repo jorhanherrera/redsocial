@@ -25,7 +25,7 @@ router.register(r'users', views.UserViewSet)
 router.register(r'areas', views.AreaConocimientoViewSet)
 router.register(r'intereses',views.InteresViewSet)
 router.register(r'multimedia',views.MultimediaViewSet)
-router.register(r'post',views.PostViewSet)
+router.register(r'time_line',views.TimeLineViewSet)
 router.register(r'perfil',views.PerfilViewSet)
 router.register(r'evento',views.EventoViewSet)
 

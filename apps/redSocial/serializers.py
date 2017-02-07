@@ -49,24 +49,22 @@ class EventoSerializer(ModelSerializer):
 		model = Evento
 		fields = ('titulo', 'descripcion', 'fecha', 'logo', 'propietario', 'estatus')
 
-class PostSerializer(ModelSerializer):
+class TimeLineSerializer(ModelSerializer):
 	usuario = serializers.PrimaryKeyRelatedField(many=False, queryset= User.objects.all())
 	canal = serializers.PrimaryKeyRelatedField(many=False, queryset= Canal.objects.all())
 	multimedia = serializers.PrimaryKeyRelatedField(many=False, queryset= Multimedia.objects.all())
 	class Meta:
 		model = Post
-		fields = ('contenido', 'canal', 'usuario', 'multimedia', 'creado_en', 'estatus')
+		fields = ('contenido', 'canal', 'usuario', 'multimedia', 'creado_en', 'estatus', 'comentarios', 'likes')
 
 class LikeSerializer(ModelSerializer):
-	propietario = PropietarioSerializer()
-	post = PostSerializer()
 	class Meta:
 		model = Like
 		fields = ('propietario', 'post', 'fecha', 'estatus')
 
 class ComentarioSerializer(ModelSerializer):
 	propietario = PropietarioSerializer()
-	post = PostSerializer()
+	post = TimeLineSerializer()
 	class Meta:
 		model = Like
 		fields = ('propietario', 'post', 'mensaje', 'fecha', 'estatus')
